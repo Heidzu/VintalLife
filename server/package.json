@@ -2,6 +2,10 @@
   "name": "vintallife-server",
   "version": "1.0.0",
   "description": "REST API for the VintalLife custom kitchen service.",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
