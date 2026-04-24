@@ -1,0 +1,236 @@
+
+.header {
+    max-width: 1500px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 29px 0;
+    box-sizing: border-box;
+}
+
+.header-center,
+.header-right-side {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 172px;
+    max-width: 100%;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.logo-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.contact-phone-number,
+.contact-phone-number-dark {
+    margin: 0;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 115%;
+    white-space: nowrap;
+}
+
+.contact-phone-number {
+    color: #2D2D2D;
+}
+
+.contact-phone-number-dark {
+    color: #ffffff;
+}
+
+.button,
+.button-dark {
+    width: 260px;
+    max-width: 100%;
+    min-height: 54px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+    line-height: 100%;
+    background-color: transparent;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.button {
+    border: 2px solid #2D2D2D;
+    color: #2D2D2D;
+}
+
+.button:hover {
+    background-color: #2D2D2D;
+    color: #ffffff;
+}
+
+.button-dark {
+    border: 2px solid #ffffff;
+    color: #ffffff;
+}
+
+.button-dark:hover {
+    background-color: #ffffff;
+    color: #2D2D2D;
+}
+
+.switcher {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
+
+.switcher-button {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.burger-menu {
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    cursor: pointer;
+}
+
+.burger-menu-icon {
+    width: 36px;
+    height: 36px;
+}
+
+.switcher, 
+.switcher-button,
+.burger-menu,
+.button,
+.button-dark {
+    transition: transform 0.1s ease-out;
+    /* Примусово виносимо на GPU */
+    transform: translateZ(0); 
+    backface-visibility: hidden;
+    perspective: 1000px;
+    
+    /* Прибираємо стандартне виділення Safari */
+    -webkit-tap-highlight-color: transparent;
+    
+    /* Покращуємо рендеринг тексту під час руху */
+    -webkit-font-smoothing: antialiased;
+}
+
+@keyframes click-bounce {
+    0% { transform: scale(1) translateZ(0); }
+    50% { transform: scale(0.7) translateZ(0); } /* Трохи менш агресивно */
+    100% { transform: scale(1) translateZ(0); }
+}
+
+.switcher:active, 
+.switcher-button:active,
+.burger-menu:active,
+.button:active,
+.button-dark:active {
+    animation: click-bounce 0.35s ease-out;
+}
+
+@media (max-width: 1532px) {
+    .header {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    
+}
+
+@media (max-width: 1034px) {
+    .header {
+        flex-wrap: wrap;
+    }
+
+    .header-left-side {
+        flex-wrap: wrap;
+    }
+
+    .contact-phone-number,
+    .contact-phone-number-dark {
+        display: none;
+    }
+
+    .button,
+    .button-dark {
+        width: 230px;
+        min-height: 48px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 18px 16px 30px 16px;
+    }
+
+    .logo {
+        width: 150px;
+    }
+
+    .contact-phone-number,
+    .contact-phone-number-dark,
+    .button,
+    .button-dark {
+        display: none;
+    }
+
+    .header-left-side {
+        flex: 1;
+    }
+
+    .header-right-side {
+        margin-left: auto;
+    }
+
+    .switcher {
+        width: 22px;
+        height: 22px;
+    }
+
+    .burger-menu {
+        height: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        gap: 12px;
+        padding: 14px;
+    }
+
+    .logo {
+        width: 130px;
+    }
+
+    .switcher {
+        width: 20px;
+        height: 20px;
+    }
+
+    .burger-menu {
+        height: 28px;
+    }
+
+    .burger-menu img {
+        width: 22px;
+        height: 22px;
+    }
+}

@@ -8,18 +8,65 @@ server/node_modules/
 .pnp.js
 
 # testing
-/coverage
+coverage/
+.nyc_output/
 
-# production
-/build
+# production builds
+client/build/
+server/build/
+dist/
 
-# misc
-.DS_Store
+# Environment variables (ALL .env files — NEVER commit secrets)
+.env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+client/.env
+server/.env
 
+# Uploads (user uploaded files — never commit)
+server/uploads/
+client/uploads/
+/uploads/
+
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.iml
+
+# Cache
+.cache/
+.parcel-cache/
+.eslintcache
+.npm
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# Misc
+*.pid
+*.seed
+*.pid.lock

@@ -1,0 +1,359 @@
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(3px);
+    padding: 16px;
+    box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+}
+
+.modal-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-container {
+    width: 100%;
+    height: 100%;
+    max-width: clamp(622px,46.666vw,889px);
+    max-height: clamp(489px,32.178vw,613px);
+    position: relative;
+    padding: clamp(35px,2.624vw,50px) clamp(42px,3.149vw,60px);
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    transform: scale(0.9);
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.modal-container.visible {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.modal-container.light {
+    background-color: #ffffff;
+}
+
+.modal-container.dark {
+    background-color: #0f0f0f;
+}
+
+/* камені */
+
+.stone-apper,
+.stone-bottom {
+    position: absolute;
+    max-width: 40%;
+    height: auto;
+    z-index: -1;
+}
+
+.stone-apper {
+    top: -120px;
+    right: -40px;
+}
+
+.stone-bottom {
+    bottom: -60px;
+    left: -80px;
+}
+
+/* header */
+
+.modal-header {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    max-width: 733px;
+}
+
+.text-title,
+.text-title-dark {
+    margin: 0;
+    font-family: SovMod, sans-serif;
+    font-weight: 400;
+    font-size: clamp(1.5rem, 2.099vw, 2.5rem);
+    line-height: 1.05;
+}
+
+.text-title {
+    color: #2D2D2D;
+}
+
+.text-title-dark {
+    color: #ffffff;
+}
+
+.text-subtitle,
+.text-subtitle-dark {
+    padding-top: 10px;
+    margin: 0;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    font-size: clamp(1.15rem, 1.364vw, 1.625rem);
+    line-height: 105%;
+    letter-spacing: 0;
+}
+
+.text-subtitle {
+    color: #2D2D2D;
+}
+
+.text-subtitle-dark {
+    color: #ffffff;
+}
+
+/* кнопка закриття */
+
+.close-btn {
+    width: 100%;
+    max-width: clamp(22px,1.679vw,32px);
+    aspect-ratio: 1 / 1;
+    padding: 0px;
+    align-self: flex-end;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.close-btn,
+.close-btn img {
+    width: 100%;
+    max-width: clamp(22px,1.679vw,32px);
+    aspect-ratio: 1 / 1;
+}
+
+.close-btn,
+.close-btn img{
+    transition: transform 0.1s ease-out;
+    /* Примусово виносимо на GPU */
+    transform: translateZ(0); 
+    backface-visibility: hidden;
+    perspective: 1000px;
+    
+    /* Прибираємо стандартне виділення Safari */
+    -webkit-tap-highlight-color: transparent;
+    
+    /* Покращуємо рендеринг тексту під час руху */
+    -webkit-font-smoothing: antialiased;
+}
+
+.close-btn:active,
+.close-btn img:active {
+    animation: click-bounce 0.35s ease-out;
+}
+
+/* форма */
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.modal-form,
+.modal-form-dark {
+    padding-top: clamp(20px,2.099vw,40px);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 460px;
+}
+
+.form-input,
+.form-input-dark {
+    background-color: inherit;
+    width: 100%;
+    min-height: 54px;
+    padding: 12px;
+    font-family: Montserrat;
+    box-sizing: border-box;
+}
+
+.form-input {
+    border: 1px solid #2D2D2D80;
+}
+
+.form-input-dark {
+    border: 1px solid #e0e0e080;
+}
+
+.form-input:focus {
+    outline: none;
+    border: 3px solid #2D2D2D80;
+}
+
+.form-input-dark:focus {
+    outline: none;
+    border: 3px solid #e0e0e080;
+}
+
+.submit-btn {
+    width: 100%;
+    min-height: 52px;
+    background-color: #102F28;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* тексти */
+
+.text-privacy {
+    text-align: center;
+    margin: 0;
+    padding-top: 8px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.35;
+}
+
+/* помилки */
+
+.input-error {
+    border-color: #ff4d4d !important;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    min-height: 82px;
+    width: 100%;
+}
+
+.caps-label-modal,
+.error-label-modal {
+    padding-top: 5px;
+    font-size: 10px;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    line-height: 1.2;
+    z-index: 1;
+}
+
+.caps-label-modal {
+    color: #b07a00;
+}
+
+.error-label-modal {
+    color: #c73d42;
+}
+
+@media (max-width: 768px) {
+
+
+    .modal-container {
+        padding: 35px clamp(14px,5.468vw,42px);
+        max-height: 470px;
+    }
+
+    .form-input,
+    .form-input-dark {
+        min-height: 46px;
+    }
+
+    .submit-btn {
+        min-height: 50px;
+    }
+
+    .input-group {
+        min-height: 72px;
+    }
+}
+
+/* адаптив */
+
+@media (max-width: 480px) {
+    .stone-apper {
+        top: -70px;
+        right: -40px;
+    }
+
+    .stone-bottom {
+        bottom: -30px;
+        left: -40px;
+    }
+
+    .modal-container {
+        max-height: clamp(435px,97.916vw,490px);
+        padding: 20px 14px;
+    }
+
+    .text-title,
+    .text-title-dark {
+        font-size: clamp(1.1875rem, 5vw, 1.5rem);
+    }
+
+    .text-subtitle,
+    .text-subtitle-dark {
+        font-size: 16px;
+    }
+
+    .input-group {
+        min-height: 72px;
+    }
+
+    .text-privacy {
+        padding-top: 3px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 380px) {
+    .modal-container {
+        padding: 10px 12px;
+    }
+}
+
+@media (max-height: 500px) {
+    .modal-container {
+    max-height: 90dvh; 
+    
+    /* 2. Вмикаємо скрол, якщо контент більший за max-height */
+    overflow-y: auto; 
+    
+    /* 3. Ховаємо скролбар для Firefox */
+    scrollbar-width: none; 
+    
+    /* 4. Ховаємо скролбар для старих IE та Edge */
+    -ms-overflow-style: none;
+}
+
+.modal-container::-webkit-scrollbar {
+    display: none;
+}
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

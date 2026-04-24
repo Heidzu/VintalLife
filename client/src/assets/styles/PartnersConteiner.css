@@ -1,0 +1,368 @@
+.partners-conteiner {
+    width: 100%;
+    max-width: 1905px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 105px 16px 55px;
+    box-sizing: border-box;
+    /* overflow: hidden; */
+}
+
+.title-partners {
+    margin: 0 0 25px;
+    font-family: SovMod, sans-serif;
+    font-weight: 400;
+    font-size: clamp(1.5rem, 2.099vw, 2.5rem);
+    line-height: 1.05;
+    text-align: center;
+}
+
+.title-partners span {
+    margin-left: clamp(3px,0.367vw,7px);
+    margin-right: clamp(3px,0.367vw,7px);
+}
+
+.logo-partners,
+.logo-partners-dark {
+    width: 100%;
+    max-width: 1500px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: "hettich blum giff egger kronas kesseboshmer";
+    box-sizing: border-box;
+}
+
+.hettich-logo, .hettich-logo-dark { grid-area: hettich; }
+.blum-logo, .blum-logo-dark { grid-area: blum; }
+.giff-logo, .giff-logo-dark { grid-area: giff; }
+.eEgger-logo, .eEgger-logo-dark { grid-area: egger; }
+.kronas-logo, .kronas-logo-dark { grid-area: kronas; }
+.kesseboshmer-logo, .kesseboshmer-logo-dark { grid-area: kesseboshmer; }
+
+.hettich-logo,
+.blum-logo,
+.giff-logo,
+.eEgger-logo,
+.kronas-logo,
+.kesseboshmer-logo,
+.hettich-logo-dark,
+.blum-logo-dark,
+.giff-logo-dark,
+.eEgger-logo-dark,
+.kronas-logo-dark,
+.kesseboshmer-logo-dark {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 250px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.hettich-logo,
+.blum-logo,
+.giff-logo,
+.eEgger-logo,
+.kronas-logo,
+.kesseboshmer-logo {
+    border: 1px solid #2D2D2D80;
+}
+
+.hettich-logo-dark,
+.blum-logo-dark,
+.giff-logo-dark,
+.eEgger-logo-dark,
+.kronas-logo-dark,
+.kesseboshmer-logo-dark {
+    border: 1px solid #e0e0e030;
+}
+
+.blum-logo,
+.eEgger-logo,
+.kesseboshmer-logo {
+    background-color: #F4F4F4;
+}
+
+.blum-logo-dark,
+.eEgger-logo-dark,
+.kesseboshmer-logo-dark {
+    background-color: #0A0A0A;
+}
+
+.logo-partners img,
+.logo-partners-dark img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.logo-partners img {
+    filter: grayscale(100%);
+}
+
+.logo-partners-dark img {
+    filter: grayscale(100%) invert(100%);
+}
+
+.hettich-logo img,
+.hettich-logo-dark img {
+    width: min(clamp(105px,7.874vw,150px), 100%);
+}
+
+.blum-logo img,
+.blum-logo-dark img {
+    width: min(clamp(130.2px,9.763vw,186px), 100%);
+}
+
+.giff-logo img,
+.giff-logo-dark img {
+    width: min(clamp(130.2px,9.763vw,186px), 100%);
+}
+
+.eEgger-logo img,
+.eEgger-logo-dark img {
+    width: min(clamp(133px,9.973vw,190px), 100%);
+}
+
+.kronas-logo img,
+.kronas-logo-dark img {
+    width: min(clamp(171.5px,12.86vw,245px), 100%);
+}
+
+.kesseboshmer-logo img,
+.kesseboshmer-logo-dark img {
+    width: min(clamp(154px,11.548vw,220px), 100%);
+}
+
+.stone-left-in-partners-conteiner {
+    position: absolute;
+    top: 230px;
+    right: -105px;
+    z-index: -1;
+    max-width: 30%;
+    height: auto;
+    pointer-events: none;
+}
+
+@media (max-width: 1700px) {
+    .logo-partners,
+    .logo-partners-dark {
+        max-width: clamp(1050px,88.235vw,1500px);
+    }
+
+    .hettich-logo,
+    .blum-logo,
+    .giff-logo,
+    .eEgger-logo,
+    .kronas-logo,
+    .kesseboshmer-logo,
+    .hettich-logo-dark,
+    .blum-logo-dark,
+    .giff-logo-dark,
+    .eEgger-logo-dark,
+    .kronas-logo-dark,
+    .kesseboshmer-logo-dark {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        /* width: clamp(175px,13.123vw,250px);
+        height: clamp(175px,13.123vw,250px); */
+    }
+}
+
+@media (max-width: 1200px) {
+    .logo-partners,
+    .logo-partners-dark {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas: 
+            "hettich blum giff"
+            "egger kronas kesseboshmer";
+    }
+
+    .title-partners {
+        font-size: clamp(1.5rem, 3.333vw, 2.5rem);
+    }
+
+    .title-partners span {
+        margin-left: clamp(3px,0.583vw,7px);
+        margin-right: clamp(3px,0.583vw,7px);
+    }
+
+    .logo-partners,
+    .logo-partners-dark {
+        max-width: clamp(636px,83.333vw,1000px);
+    }
+
+    .hettich-logo,
+    .blum-logo,
+    .giff-logo,
+    .eEgger-logo,
+    .kronas-logo,
+    .kesseboshmer-logo,
+    .hettich-logo-dark,
+    .blum-logo-dark,
+    .giff-logo-dark,
+    .eEgger-logo-dark,
+    .kronas-logo-dark,
+    .kesseboshmer-logo-dark {
+        width: clamp(212px,27.777vw,333.333px);
+        height: clamp(212px,27.777vw,333.333px);
+    }
+    
+    .hettich-logo img,
+    .hettich-logo-dark img {
+        width: min(clamp(105px,16.666vw,200px), 100%);
+    }
+
+    .blum-logo img,
+    .blum-logo-dark img {
+        width: min(clamp(130.2px,20.666vw,248px), 100%);
+    }
+
+    .giff-logo img,
+    .giff-logo-dark img {
+        width: min(clamp(130.2px,20.666vw,248px), 100%);
+    }
+
+    .eEgger-logo img,
+    .eEgger-logo-dark img {
+        width: min(clamp(133px,21.083vw,253px), 100%);
+    }
+
+    .kronas-logo img,
+    .kronas-logo-dark img {
+        width: min(clamp(171.5px,26.54vw,318.5px), 100%);
+    }
+
+    .kesseboshmer-logo img,
+    .kesseboshmer-logo-dark img {
+        width: min(clamp(154px,24.416vw,293px), 100%);
+    }
+
+    .stone-left-in-partners-conteiner {
+        z-index: -20;
+        top: -50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .stone-left-in-partners-conteiner {
+        display: none;
+    }
+
+    .logo-partners,
+    .logo-partners-dark {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: 
+            "hettich blum"
+            "egger giff"
+            "kronas kesseboshmer";
+    }
+
+    .partners-conteiner {
+        padding: 50px 16px 40px;
+    }
+
+    .title-partners {
+        font-size: clamp(1.5rem, 5.208vw, 2.5rem);
+    }
+
+    .title-partners span {
+        margin-left: clamp(3px,0.911vw,7px);
+        margin-right: clamp(3px,0.911vw,7px);
+    }
+
+    .logo-partners,
+    .logo-partners-dark {
+        max-width: 460px;
+    }
+
+    .hettich-logo,
+    .blum-logo,
+    .giff-logo,
+    .eEgger-logo,
+    .kronas-logo,
+    .kesseboshmer-logo,
+    .hettich-logo-dark,
+    .blum-logo-dark,
+    .giff-logo-dark,
+    .eEgger-logo-dark,
+    .kronas-logo-dark,
+    .kesseboshmer-logo-dark {
+        width: 230px;
+        height: 230px;
+    }
+}
+
+@media (max-width: 650px) {
+    .logo-partners,
+    .logo-partners-dark {
+        max-width: clamp(249px,70.769vw,460px);
+    }
+
+    .hettich-logo,
+    .blum-logo,
+    .giff-logo,
+    .eEgger-logo,
+    .kronas-logo,
+    .kesseboshmer-logo,
+    .hettich-logo-dark,
+    .blum-logo-dark,
+    .giff-logo-dark,
+    .eEgger-logo-dark,
+    .kronas-logo-dark,
+    .kesseboshmer-logo-dark {
+        width: clamp(124.5px,35.384vw,230px);
+        height: clamp(124.5px,35.384vw,230px);
+    }
+}
+
+@media (max-width: 480px) {
+    .partners-conteiner {
+        padding: 36px 16px 32px;
+    }
+
+
+    .hettich-logo,
+    .blum-logo,
+    .giff-logo,
+    .eEgger-logo,
+    .kronas-logo,
+    .kesseboshmer-logo,
+    .hettich-logo-dark,
+    .blum-logo-dark,
+    .giff-logo-dark,
+    .eEgger-logo-dark,
+    .kronas-logo-dark,
+    .kesseboshmer-logo-dark {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 380px) {
+    .logo-partners,
+    .logo-partners-dark {
+        max-width: clamp(268px,91.578vw,348px);
+    }
+
+    .hettich-logo,
+    .blum-logo,
+    .giff-logo,
+    .eEgger-logo,
+    .kronas-logo,
+    .kesseboshmer-logo,
+    .hettich-logo-dark,
+    .blum-logo-dark,
+    .giff-logo-dark,
+    .eEgger-logo-dark,
+    .kronas-logo-dark,
+    .kesseboshmer-logo-dark {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+}

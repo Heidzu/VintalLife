@@ -1,0 +1,56 @@
+.switcher, 
+.switcher-button,
+.burger-menu,
+.button,
+.button-dark,
+.btn-window-result,
+.btn-window-error,
+.close-btn,
+.close-btn-catalog,
+.submit-btn,
+.measure-button,
+.cost-button,
+.btn-form-installment,
+.btn-free-measurement,
+.submit-button,
+.submit-button-lead-magnet,
+.btn-in-footer
+.Telegram,
+.Whatsapp,
+.Viber {
+    transition: transform 0.1s ease-out;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+}
+
+@keyframes click-bounce {
+    0% { transform: scale(1) translateZ(0); }
+    50% { transform: scale(0.7) translateZ(0); }
+    100% { transform: scale(1) translateZ(0); }
+}
+
+.switcher:active, 
+.switcher-button:active,
+.burger-menu:active,
+.button:active,
+.button-dark:active,
+.btn-window-result:active,
+.btn-window-error:active,
+.close-btn:active,
+.close-btn-catalog:active,
+.submit-btn:active,
+.measure-button:active,
+.cost-button:active,
+.btn-form-installment:active,
+.btn-free-measurement:active,
+.submit-button:active,
+.submit-button-lead-magnet:active,
+.btn-in-footer:active 
+.Telegram:active,
+.Whatsapp:active,
+.Viber:active{
+    animation: click-bounce 0.35s ease-out !important;
+}

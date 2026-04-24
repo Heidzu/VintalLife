@@ -1,70 +1,135 @@
-# Getting Started with Create React App
+# VintalLife
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Веб-сайт для виробництва авторських кухонь на замовлення в Луцьку.
 
-## Available Scripts
+## Технології
 
-In the project directory, you can run:
+- **Frontend:** React 19, Bootstrap 5, Swiper
+- **Backend:** Node.js, Express, MongoDB, AdminJS
+- **Адмін-панель:** AdminJS для керування контентом, заявками, галереєю
 
-### `npm start`
+## Локальна розробка
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Вимоги
+- Node.js >= 18
+- MongoDB (локально або Atlas)
+- npm або yarn
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Встановлення
 
-### `npm test`
+1. **Клонуйте репозиторій**
+```bash
+git clone https://github.com/Heidzu/VintalLife.git
+cd VintalLife
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Встановіть залежності**
+```bash
+# Клієнт
+cd client
+npm install
 
-### `npm run build`
+# Сервер
+cd ../server
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Налаштуйте змінні оточення**
+```bash
+# Сервер
+cp .env.example .env
+# Редагуйте .env — вкажіть MONGODB_URI, ADMIN_EMAIL, ADMIN_PASSWORD тощо
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Клієнт (опційно)
+cd ../client
+cp .env.example .env
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. **Запустіть MongoDB**
+- Локально: `mongod`
+- Або створіть безкоштовний кластер на MongoDB Atlas
 
-### `npm run eject`
+5. **Запустіть сервер**
+```bash
+cd server
+npm start
+```
+Сервер запуститься на http://localhost:5000
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+6. **Запустіть клієнт (окремий термінал)**
+```bash
+cd client
+npm start
+```
+Клієнт запуститься на http://localhost:3000
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Production build
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Збірка клієнта
+```bash
+cd client
+npm run build
+```
+Буде створено папку `client/build/` зі статичними файлами.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Запуск сервера в production
+```bash
+cd server
+NODE_ENV=production npm start
+```
+Сервер обслуговуватиме статичні файли з `client/build/` та API на `/api`.
 
-## Learn More
+### Адмін-панель
+- URL: http://localhost:5000/admin
+- Логін: `admin@vintallife.local`
+- Пароль: `ChangeMe123!` (змініть у `.env`!)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## API Endpoints
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `POST /api/requests` — відправка заявки з форми
+- `GET /api/photos/style/:style` — отримання фото кухонь за стилем
+- `GET /api/content` — отримання контенту (за ключами або типом)
+- `GET /api/health` — перевірка стану сервера
 
-### Code Splitting
+## Структура проєкту
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+VintalLife/
+├── client/                 # React SPA
+│   ├── public/            # статичні ресурси (index.html, manifest)
+│   ├── src/
+│   │   ├── components/    # React компоненти
+│   │   ├── hooks/         # кастомні хуки (useContent, useFormValidation)
+│   │   ├── services/      # API сервіси
+│   │   ├── content/       # контент-ключі та fallbacks
+│   │   └── assets/        # зображення, стилі
+│   ├── package.json
+│   └── .env.example
+├── server/                # Express API
+│   ├── config/           # конфігурація (adminjs, db)
+│   ├── models/           # Mongoose моделі (ContactRequest, Photo, Content)
+│   ├── routes/           # Express роутери
+│   ├── middlewares/      # власні middleware (errorHandler, mongoSanitize)
+│   ├── index.js          # точка входу
+│   ├── app.js            # створення Express app
+│   ├── .env.example
+│   └── package.json
+├── .gitignore
+└── README.md
+```
 
-### Analyzing the Bundle Size
+## Хостинг
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Безкоштовні опції
+- **Railway.app** — $5 кредитів на старті, підтримує Node.js + MongoDB Atlas
+- **Render.com** — безкоштовний Always Free tier, HTTPS
+- **Vercel** — для фронтенду (React), бекенд окремо
 
-### Making a Progressive Web App
+### Приклад деплою на Railway
+1. Зареєструйтесь на railway.app
+2. Підключіть GitHub репозиторій
+3. Додайте змінні оточення (MONGODB_URI, ADMIN_EMAIL, ADMIN_PASSWORD, ADMIN_COOKIE_SECRET, CLIENT_URL)
+4. Deploy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Лицензія
+ISC

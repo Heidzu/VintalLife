@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Додати фото кухні</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { margin-bottom: 20px; color: #333; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 5px; font-weight: 500; color: #333; }
+        label .required { color: red; }
+        input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: #4a90d9; }
+        textarea { min-height: 80px; resize: vertical; }
+        .help-text { font-size: 12px; color: #666; margin-top: 5px; }
+        .preview { margin-top: 15px; }
+        .preview img { max-width: 300px; max-height: 200px; border-radius: 8px; border: 1px solid #ddd; object-fit: cover; }
+        button { padding: 12px 24px; background: #4a90d9; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
+        button:hover { background: #357abd; }
+        button:disabled { background: #ccc; cursor: not-allowed; }
+        .message { margin-top: 15px; padding: 10px; border-radius: 4px; }
+        .message.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .message.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Додати фото кухні</h1>
+        <form id="photoForm">
+            <div class="form-group">
+                <label>URL зображення <span class="required">*</span></label>
+                <input type="url" id="fileUrl" placeholder="https://res.cloudinary.com/your-cloud/image/upload/..." required>
+                <p class="help-text">Вставте посилання на зображення з Cloudinary</p>
+                <div class="preview" id="preview"></div>
+            </div>
+
+            <div class="form-group">
+                <label>Назва <span class="required">*</span></label>
+                <input type="text" id="title" placeholder="Кухня Арт Деко - варіант 1" required>
+            </div>
+
+            <div class="form-group">
+                <label>Стиль кухні <span class="required">*</span></label>
+                <select id="style" required>
+                    <option value="art-deco">Арт Деко</option>
+                    <option value="minimalism">Мінімалізм Хайтек</option>
+                    <option value="loft">Лофт Індастріал</option>
+                    <option value="neoclassic">Неокласика</option>
+                    <option value="provance">Прованс Шебі</option>
+                    <option value="scandinavian">Скандинавський</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Опис</label>
+                <textarea id="description" placeholder="Опис фотографії..."></textarea>
+            </div>
+
+            <button type="submit" id="submitBtn">Додати фото</button>
+            <div id="message"></div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('photoForm');
+        const fileUrlInput = document.getElementById('fileUrl');
+        const previewDiv = document.getElementById('preview');
+        const messageDiv = document.getElementById('message');
+        const submitBtn = document.getElementById('submitBtn');
+
+        fileUrlInput.addEventListener('input', (e) => {
+            const url = e.target.value;
+            if (url) {
+                previewDiv.innerHTML = `<img src="${url}" alt="Preview" onerror="this.parentElement.innerHTML='<p style=\\'color:red\\'>Не вдалося завантажити зображення</p>'">`;
+            } else {
+                previewDiv.innerHTML = '';
+            }
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Збереження...';
+            messageDiv.className = '';
+            messageDiv.textContent = '';
+
+            const formData = {
+                title: document.getElementById('title').value,
+                fileUrl: document.getElementById('fileUrl').value,
+                style: document.getElementById('style').value,
+                description: document.getElementById('description').value
+            };
+
+            try {
+                const response = await fetch('/api/photos', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    messageDiv.className = 'message success';
+                    messageDiv.textContent = 'Фото успішно додано!';
+                    form.reset();
+                    previewDiv.innerHTML = '';
+                } else {
+                    messageDiv.className = 'message error';
+                    messageDiv.textContent = result.message || 'Помилка при додаванні фото';
+                }
+            } catch (error) {
+                messageDiv.className = 'message error';
+                messageDiv.textContent = 'Помилка мережі: ' + error.message;
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Додати фото';
+            }
+        });
+    </script>
+</body>
+</html>

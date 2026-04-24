@@ -1,0 +1,25 @@
+.burger-menu-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.burger-menu {
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    cursor: pointer;
+}
+
+.burger-menu-icon {
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.burger-menu:hover .burger-menu-icon {
+    transform: scale(1.14);
+}

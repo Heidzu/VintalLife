@@ -1,0 +1,236 @@
+.footer-component,
+.footer-component-dark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    color: #ffffff;
+    box-sizing: border-box;
+    padding: 32px 16px 20px;
+}
+
+.footer-component {
+    background-color: #2d2d2d;
+}
+
+.footer-component-dark {
+    background-color: #000000;
+}
+
+.conteiner-main-function-footer {
+    width: 100%;
+    max-width: 1500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.logo-footer {
+    max-width: 100%;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.footer-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 42px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 115%;
+    flex: 1;
+}
+
+.refs-footer {
+    color: #ffffff;
+    text-decoration: none;
+    transition: opacity 0.25s ease;
+}
+
+.refs-footer:hover {
+    opacity: 0.75;
+}
+
+.right-side-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.number-to-call {
+    margin: 0;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 115%;
+    white-space: nowrap;
+}
+
+.btn-in-footer {
+    width: 260px;
+    max-width: 100%;
+    min-height: 54px;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+    line-height: 100%;
+    background-color: transparent;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.btn-in-footer:hover {
+    background-color: #ffffff;
+    color: #2d2d2d;
+}
+
+.text-footer {
+    margin: 24px 0 0;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 115%;
+    color: #e0e0e080;
+    text-align: center;
+}
+
+@media (max-width: 1700px) {
+    .conteiner-main-function-footer {
+        max-width: clamp(1050px,88.235vw,1500px);
+    }
+
+    .footer-menu {
+        gap: clamp(15px, calc(-62px + 6vw), 42px);
+    }
+}
+
+@media (max-width: 1300px) {
+    .number-to-call {
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    .logo-footer {
+        order: 1;
+        padding-bottom: 18px;
+    }
+
+    .conteiner-main-function-footer {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        max-width: clamp(640px,83.333vw,1000px);
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-menu {
+        order: 3;
+        grid-column: 1 / -1;
+        border-top: 2px solid rgba(255, 255, 255, 0.1);
+        padding: 18px 0 0px;
+        gap: clamp(15px, 3.5vw, 42px);
+    }
+
+    .number-to-call {
+        display: block;
+    }
+
+    .right-side-footer {
+        padding-bottom: 18px;
+        order: 2;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 992px) {
+    .btn-in-footer {
+        min-height: 48px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-component {
+        padding-top: 20px;
+    }
+
+    .conteiner-main-function-footer {
+        max-width: 460px;
+        width: 100%;
+        grid-template-columns: repeat(1, 1fr);
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .logo-conteiner {
+        display: flex;
+        justify-content: center;
+    }
+
+    .logo-footer {
+        order: 1;
+        padding: 0px;
+    }
+
+    .footer-menu {
+        display: flex;
+        font-size: 14px;
+        order: 2;
+        gap: 10px;
+        justify-content: space-between;
+    }
+
+    .refs-footer {
+        flex: 1; /* Кожне посилання забирає рівну частку ширини */
+        text-align: center; /* Текст всередині посилання по центру */
+        white-space: nowrap;
+    }
+
+    .right-side-footer {
+        order: 3;
+        flex-direction: column-reverse;
+        width: 100%;
+        gap: 14px;
+    }
+
+    .number-to-call {
+        font-size: 15px;
+        text-align: center;
+        white-space: normal;
+    }
+
+    .btn-in-footer {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .text-footer {
+        margin-top: 20px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-footer {
+        max-width: 130px;
+    }
+    
+    .conteiner-main-function-footer {
+        gap: 20px;
+    }
+
+    .number-to-call,
+    .footer-menu {
+        font-size: 13px;
+    }
+}

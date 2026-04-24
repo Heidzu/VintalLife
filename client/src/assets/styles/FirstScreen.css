@@ -1,0 +1,419 @@
+[data-bs-theme="dark"] {
+    --bs-body-bg: #0F0F0F;
+    --bs-body-color: #ffffff;
+}
+
+[data-bs-theme="light"] {
+    --bs-body-bg: #ffffff;
+    --bs-body-color: #212529;
+}
+
+/* ОСНОВА */
+
+.first-screen {
+    width: 100%;
+    max-width: 1905px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /* overflow: hidden; */
+    box-sizing: border-box;
+}
+
+.first-screen-conteiner {
+    display: flex;
+    width: 100%;
+    max-width: 1905px;
+    align-items: center;
+    flex-direction: column;
+}
+
+.center-first-screen-conteiner {
+    display: grid;
+    grid-template-columns: 31.5% auto 31.5%;
+    grid-template-areas: "conteiner-left-side conteiner-title conteiner-photo";
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.title-conteiner-first-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    grid-area: conteiner-title;
+}
+
+.kitchen-first-conteiner {
+    grid-area: conteiner-photo;
+}
+/* ДЕКОР */
+
+.first-stone,
+.second-stone {
+    color: #0F0F0F;
+    position: absolute;
+    z-index: -10;
+    max-width: 30%;
+    height: auto;
+}
+
+.first-stone {
+    top: 40px;
+    right: 15%;
+}
+
+.second-stone {
+    top: -350px;
+    left: 10%;
+}
+
+/* ЛІВА ЧАСТИНА */
+
+.left-side {
+    display: flex;
+    flex-direction: column;
+    grid-area: conteiner-left-side;
+}
+
+.kitchen-second {
+    width: 600px;  /* 470px */
+    max-width: 100%;
+    height: auto;
+    opacity: 0; 
+    z-index: -1;
+    animation: none;
+}
+
+/* ТЕКСТ КАТАЛОГУ */
+
+.text-catalog {
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 20px;
+    padding-left: clamp(1rem, calc((50vw - 46.875rem) * 1), 12.65rem);
+}
+
+.ref-catalog,
+.ref-catalog-dark {
+    text-decoration: none;
+}
+
+.theme-image-light,
+.theme-image-dark {
+    display: block;
+}
+
+.theme-image-dark {
+    display: none;
+}
+
+[data-bs-theme="dark"] .theme-image-light {
+    display: none;
+}
+
+[data-bs-theme="dark"] .theme-image-dark {
+    display: block;
+}
+
+.theme-inline-icon {
+    display: inline-flex;
+    margin-left: 15px;
+    vertical-align: middle;
+}
+
+.ref-catalog {
+    color: #2D2D2D;
+}
+
+.ref-catalog-dark {
+    color: #ffffff;
+}
+
+/* TITLE */
+.title-first-screen-dark,
+.title-first-screen {
+    display: flex;
+    flex-direction: column;
+    font-family: SovMod;
+    font-size: clamp(2.5rem, 3.67vw, 4.375rem);
+    line-height: 114.99999999999999%;
+    letter-spacing: 0%;
+    color: transparent;
+}
+
+.title-first-screen {-webkit-text-stroke: clamp(0.7px, 0.057vw + 0.518px, 1.6px) #2D2D2D;}
+.title-first-screen-dark {-webkit-text-stroke: 0.7px #ffffff;}
+
+.sub-1,
+.sub-2, 
+.sub-dark-1, 
+.sub-dark-2 {
+    -webkit-text-stroke: initial;
+    font-size: clamp(2rem, 3.15vw, 3.75rem);
+}
+
+
+.sub-1,
+.sub-dark-1 {
+    padding-left: clamp(2.5rem, 9.45vw, 11.25rem);
+}
+
+.sub-2, 
+.sub-dark-2 {
+    padding-left: clamp(0.625rem, 1.05vw, 1.25rem);
+}
+
+.sub-dark-1, .sub-dark-2 {color: #ffffff;}
+.sub-1, .sub-2 {color: #2D2D2D;}
+
+.spanI {
+    padding-left: clamp(0.125rem, 0.47vw, 0.5625rem);
+}
+
+/* КНОПКИ ПІД ТАЙТЛОМ */
+
+.btn-conteiner {
+    margin-top: 1.25rem; /* 20px */
+    /* margin-left: clamp(0rem, 3.15vw, 3.75rem);  */
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+}
+
+.measure-button{
+    width: 260px;
+    height: 54px;
+    opacity: 1;
+    color: #ffffff;
+    background-color: #2D2D2D;
+    border: 0px;
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    animation-timing-function: ease-out;
+    animation-duration: 200ms;
+    transition: background-color 0.3s ease, color 0.9s ease;
+}
+
+.measure-button:hover {
+    background-color: #111111;
+}
+
+.cost-button{
+    width: 260px;
+    height: 54px;
+    opacity: 1;
+    color: #ffffff;
+    background-color: #C73D42;
+    border: 0px;
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    transition: background-color 0.3s ease, color 0.9s ease;
+}
+
+.cost-button:hover {
+    background-color: #A52A2A;
+}
+
+/* СОЦІАЛКИ */
+
+.conteiner-social-networks {
+    display: flex;
+    gap: 16px;
+    padding-top: 30px;
+}
+
+/* ПРАВА ЧАСТИНА */
+
+.kitchen-first-img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+}
+
+.visible .kitchen-first-img {
+    animation: slideInRight 1.5s ease-out forwards;
+}
+
+.visible .kitchen-second {
+    animation: slideInLeft 1.2s ease-out forwards;
+}
+
+.visible .text-catalog {
+    animation: slideInBottom 1.2s ease-out forwards;
+}
+
+.visible .conteiner-social-networks {
+    animation: slideInBottom 1.5s ease-out forwards;
+}
+
+@keyframes slideInBottom {
+    from {
+        transform: translateY(200%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);   
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%) scaleX(-1);  
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) scaleX(-1);   
+        opacity: 1;
+    }
+}
+
+@media (max-width: 1450px) {
+    .second-stone {
+        top: -250px;
+    }
+}
+
+/* АДАПТИВ */
+
+/* планшет */
+@media (max-width: 1034px) {
+    .kitchen-first-img,
+    .kitchen-first-conteiner {
+        display: none;
+    }
+
+    .first-stone{
+        top: 200px;
+        right: -10%;
+    }
+
+    .second-stone {
+        left: 30%;
+        top: -35%;
+    }
+
+    .center-first-screen-conteiner {
+        grid-template-columns: 50% 50%;
+        align-items: flex-start;
+        gap: clamp(1rem, 2.09vw, 2.5rem);
+    }
+
+    .title-first-screen-dark,
+    .title-first-screen {
+        font-size: clamp(2rem, 5.8vw, 3.75rem);
+    }
+
+    .sub-1,
+    .sub-2,
+    .sub-dark-1,
+    .sub-dark-2 {
+        font-size: clamp(1.75rem, 5.22vw, 3.375rem);
+    }
+
+    .sub-1,
+    .sub-dark-1 {
+        padding-left: clamp(2.5rem, 15.45vw, 10.3125rem);
+    }
+
+    .sub-2,
+    .sub-dark-2 {
+        padding-left: clamp(0.3125rem, 1.06vw, 0.6875rem);
+    }
+
+    .spanI {
+        padding-left: clamp(0.125rem, 0.48vw, 0.3125rem);
+    }
+
+    .measure-button,
+    .cost-button {
+        width: 230px;
+        height: 48px;
+        font-size: 13px;
+    }
+
+
+    .header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .text-catalog {
+        font-size: 14px;
+    }
+}
+
+/* мобілка */
+@media (max-width: 768px) {
+    .contact-phone-number,
+    .contact-phone-number-dark {
+        display: none;
+    }
+
+    .logo {
+        max-width: 160px;
+    }
+
+    .Telegram img,
+    .Whatsapp img,
+    .Viber img {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@media (max-width: 592px) {
+    .first-stone {
+        top: 10%;
+    }
+
+    .second-stone {
+        top: 40%;
+        left: -5%;
+    }
+
+    .center-first-screen-conteiner {
+        grid-template-areas: 
+            "conteiner-title"
+            "conteiner-left-side"
+            "conteiner-photo";
+        grid-template-columns: 100%;
+    }
+
+    .kitchen-second {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
+
+    .conteiner-social-networks {
+        animation: none !important;
+        opacity: 1;
+    }
+}
+
+@media (max-width: 380px) {
+    .second-stone {
+        top: 48%;
+    }
+}

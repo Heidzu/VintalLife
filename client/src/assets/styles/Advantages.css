@@ -1,0 +1,290 @@
+.adv-first-stone {
+    display: none;
+}
+
+.adv-second-stone {
+    position: absolute;
+    z-index: -10;
+    max-width: 18%;
+    height: auto;
+    top: -120px;
+    left: 0;
+    opacity: 1;
+    transform: scaleX(-1);
+    pointer-events: none;
+}
+
+.advantages {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    font-family: Montserrat, sans-serif;
+    padding: 100px 16px 40px;
+    box-sizing: border-box;
+    /* overflow: hidden; */
+}
+
+.advantages-wrapper {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+/* ЛІНІЯ ПО ЦЕНТРУ */
+.advantages-line {
+    position: absolute;
+    top: 50%; /* Ставимо лінію рівно по центру контейнера */
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: auto;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.8s ease-out;
+}
+
+/* СІТКА З 5 КОЛОНОК */
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 21.2%); /* 5 ідеально рівних колонок */
+    width: 100%;
+    position: relative;
+    z-index: 2; /* Контент поверх лінії */
+}
+
+/* НАЛАШТУВАННЯ ОДНОГО СТОВПЧИКА */
+.advantage-col {
+    display: grid;
+    /* 3 рядки: текст (розтягується), крапка (фікс 40px), текст (розтягується) */
+    grid-template-rows: 1fr 40px 1fr; 
+    align-items: center;
+    justify-items: start; /* Вирівнюємо текст по лівому краю */
+}
+
+/* ПОЧАТКОВИЙ СТАН АНІМАЦІЇ */
+.adv-title, .adv-dot-wrapper, .adv-value, .advantages-line {
+    margin: 0px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-1 {
+    transition-delay: 0.1s;
+}
+
+.delay-2 {
+    transition-delay: 0.25s;
+}
+
+.delay-3 {
+    transition-delay: 0.4s;
+}
+
+/* ТЕКСТИ І КРАПКА */
+.adv-title {
+    font-weight: 500;
+    font-size: clamp(1rem, 1.66vw, 1.56rem);
+    line-height: 1.1;
+    -webkit-text-stroke: 0.5px currentColor;
+    align-self: end; /* Притискаємо текст вниз до крапки */
+}
+
+.adv-value {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.2;
+    align-self: start; /* Притискаємо текст вверх до крапки */
+    padding-top: 12px;
+}
+
+.ellipse-icon {
+    width: 10px;
+    height: 10px;
+    display: block;
+}
+
+/* --- АДАПТИВ --- */
+
+@media (max-width: 1200px) {
+    .advantages {
+        padding-top: 65px;
+    }
+
+    .adv-value {
+        padding-top: 0px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .adv-second-stone {
+        max-width: clamp(95px,20.833vw,160px) ;
+    }
+
+    .advantages {
+        padding: 60px 16px;
+    }
+
+    .advantages-wrapper {
+        /* Фіксуємо висоту, як ви просили */
+        height: 500px; 
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* ВЕРТИКАЛЬНА ЛІНІЯ */
+    .advantages-line {
+        display: block; /* Повертаємо лінію */
+        position: absolute;
+        left: 50%; /* Рівно по центру */
+        top: 0;
+        transform: translateX(-50%);
+        width: 2px; /* Робимо її тонкою вертикальною */
+        height: 100%;
+        padding-top: 10px;
+        object-fit: cover; /* Щоб зображення лінії розтягнулося по висоті */
+    }
+
+    /* СІТКА: Текст ліворуч | Лінія | Текст праворуч */
+    .advantages-grid {
+        display: grid;
+        grid-template-columns: 1fr 40px 1fr; /* 40px для зони крапок */
+        grid-template-rows: repeat(5, 1fr);
+        height: 100%;
+        width: 100%;
+        z-index: 2;
+    }
+
+    .advantage-col {
+        display: contents; /* Розриваємо контейнер, щоб дочірні елементи стали частиною загальної сітки */
+    }
+
+    /* ВИРІВНЮВАННЯ ТЕКСТУ */
+    .adv-title {
+        grid-column: 1; /* Ліва колонка */
+        text-align: right;
+        align-self: start;
+        padding-bottom: 0;
+        padding-right: 15px;
+        /* Збільшуємо текст з адаптивним зменшенням */
+        font-size: clamp(1.1rem, 4vw, 1.5rem);
+    }
+
+    .adv-value {
+        grid-column: 3; /* Права колонка */
+        text-align: left;
+        align-self: start;
+        padding-top: 4px;
+        padding-left: 15px;
+        /* Значення також робимо адаптивним */
+        font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+    }
+
+    /* КРАПКИ */
+    .adv-dot-wrapper {
+        grid-column: 2; /* Центральна колонка */
+        justify-self: center;
+        align-self: start;
+        transform: none; /* Скидаємо анімаційні зміщення, якщо потрібно */
+        padding-top: clamp(0.375rem, 1.5vw, 0.526rem);
+        padding-left: 2px;
+    }
+
+    .ellipse-icon {
+        width: 10px;
+        height: 10px;
+        background-color: inherit; /* Щоб не було артефактів */
+    }
+    
+    /* --- 1. ПОЧАТКОВИЙ СТАН --- */
+    
+    /* Текст зліва: виїжджає зліва (-50px) */
+    .adv-title {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: all 0.6s ease-out;
+    }
+
+    /* Текст справа: виїжджає справа (50px) */
+    .adv-value {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.6s ease-out;
+    }
+
+    /* Крапки: піднімаються знизу (30px) */
+    .adv-dot-wrapper {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease-out;
+    }
+
+    /* --- 2. КІНЦЕВИЙ СТАН (коли з'являється клас .visible) --- */
+    
+    /* Якщо клас .visible додається на самі елементи: */
+    .adv-title.visible, 
+    .adv-value.visible, 
+    .adv-dot-wrapper.visible {
+        opacity: 1;
+        transform: translate(0, 0); /* Повертаємо на рідні місця */
+    }
+
+    /* Якщо клас .visible додається на контейнер .advantage-col: */
+    .advantage-col.visible .adv-title,
+    .advantage-col.visible .adv-value,
+    .advantage-col.visible .adv-dot-wrapper {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+
+
+    /* --- 3. ЗАТРИМКИ ДЛЯ КОЖНОГО РЯДКА (Stagger effect) --- */
+    
+    /* Перший рядок */
+    .advantage-col:nth-child(1) .adv-title,
+    .advantage-col:nth-child(1) .adv-value,
+    .advantage-col:nth-child(1) .adv-dot-wrapper { 
+        transition-delay: 0.1s; 
+    }
+
+    /* Другий рядок */
+    .advantage-col:nth-child(2) .adv-title,
+    .advantage-col:nth-child(2) .adv-value,
+    .advantage-col:nth-child(2) .adv-dot-wrapper { 
+        transition-delay: 0.25s; 
+    }
+
+    /* Третій рядок */
+    .advantage-col:nth-child(3) .adv-title,
+    .advantage-col:nth-child(3) .adv-value,
+    .advantage-col:nth-child(3) .adv-dot-wrapper { 
+        transition-delay: 0.4s; 
+    }
+
+    /* Четвертий рядок */
+    .advantage-col:nth-child(4) .adv-title,
+    .advantage-col:nth-child(4) .adv-value,
+    .advantage-col:nth-child(4) .adv-dot-wrapper { 
+        transition-delay: 0.55s; 
+    }
+
+    /* П'ятий рядок */
+    .advantage-col:nth-child(5) .adv-title,
+    .advantage-col:nth-child(5) .adv-value,
+    .advantage-col:nth-child(5) .adv-dot-wrapper { 
+        transition-delay: 0.7s; 
+    }
+}
+
+@media (max-width: 592px) {
+    .adv-second-stone {
+        top: 100px;
+    }
+}

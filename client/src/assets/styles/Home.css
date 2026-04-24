@@ -1,0 +1,90 @@
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body, html {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+a[href^="tel"] {
+  color: inherit;
+  text-decoration: none;
+}
+
+.home {
+    overflow-x: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.theme-image-light,
+.theme-image-dark {
+    display: block;
+}
+
+.theme-image-dark {
+    display: none;
+}
+
+[data-bs-theme="dark"] .theme-image-light {
+    display: none;
+}
+
+[data-bs-theme="dark"] .theme-image-dark {
+    display: block;
+}
+
+.theme-inline-icon {
+    display: inline-flex;
+    margin-left: 15px;
+    vertical-align: middle;
+}
+
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }
+
+@font-face {
+    font-family: 'SovMod';
+    src: url('../fonts/SovMod.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Monotype Corsiva';
+    src: url('../fonts/Monotype_Corsiva_Regular.ttf') format('truetype');
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="search"],
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  background-image: none;
+}
