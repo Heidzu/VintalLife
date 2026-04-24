@@ -1,3 +1,15 @@
+require('@babel/register')({
+  extensions: ['.js', '.jsx'],
+  only: [/[\\/]server[\\/]components[\\/]/],
+  presets: ['@babel/preset-env', '@babel/preset-react'],
+  plugins: [
+    '@babel/plugin-proposal-class-properties',
+    '@babel/plugin-proposal-object-rest-spread',
+    '@babel/plugin-syntax-import-assertions',
+    '@babel/plugin-transform-modules-commonjs'
+  ]
+});
+
 require('dotenv').config();
 
 const mongoose = require('mongoose');
