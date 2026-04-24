@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   },
   "scripts": {
     "build": "cd client && npm ci && npm run build",
-    "start": "cd server && npm ci && node index.js"
+    "start": "node server/index.js"
   }
 }
