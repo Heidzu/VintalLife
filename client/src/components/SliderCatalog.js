@@ -27,10 +27,7 @@ function SliderCatalog({ theme, contentMap }) {
     const [selectedStyle, setSelectedStyle] = useState(null);
     const [stylePhotos, setStylePhotos] = useState({});
 
-    const { 
-        data: dynamicItems, 
-        loading: isItemsLoading 
-    } = useContentByType('catalog', { language: 'uk' });
+    const { data: dynamicItems } = useContentByType('catalog', { language: 'uk' });
 
     const catalogCards = useMemo(() => {
         return (dynamicItems || [])
