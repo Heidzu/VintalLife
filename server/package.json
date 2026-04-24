@@ -25,6 +25,7 @@
      "@adminjs/express": "^6.1.1",
      "@adminjs/mongoose": "^4.1.0",
      "@babel/plugin-syntax-import-assertions": "^7.23.5",
+     "@babel/plugin-transform-modules-commonjs": "^7.23.5",
      "adminjs": "^7.8.17",
      "cors": "^2.8.6",
      "dotenv": "^17.3.1",
