@@ -85,6 +85,7 @@ const buildAdminPanel = async () => {
             withMadeWithLove: false,
             softwareBrothers: false
         },
+        transpiler: false,
         resources: [
             {
                 resource: ContactRequest,
