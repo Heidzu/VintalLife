@@ -69,7 +69,8 @@ const buildAdminPanel = async () => {
     const componentLoader = new ComponentLoader();
     const components = {
         PhotoNewAction: componentLoader.add('PhotoNewAction', path.join(__dirname, '..', 'components', 'PhotoNewAction')),
-        PhotoUrlEditor: componentLoader.add('PhotoUrlEditor', path.join(__dirname, '..', 'components', 'PhotoUrlEditor'))
+        PhotoUrlEditor: componentLoader.add('PhotoUrlEditor', path.join(__dirname, '..', 'components', 'PhotoUrlEditor')),
+        PhotoNewEditor: componentLoader.add('PhotoNewEditor', path.join(__dirname, '..', 'components', 'PhotoNewEditor'))
     };
 
     const adminEmail = process.env.ADMIN_EMAIL || 'admin@vintallife.local';
