@@ -24,7 +24,10 @@ function PartnersConteiner({ theme, contentMap }) {
 
     return (
         <section className='partners-conteiner' id='partners'>
-            <h4 className='title-partners'>{title}</h4>
+            <h4 
+                className='title-partners'
+                dangerouslySetInnerHTML={{ __html: title }}
+            />
 
             <div className={theme === 'light' ? 'logo-partners' : 'logo-partners-dark'}>
                 {partners.map((partner, index) => (
