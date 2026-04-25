@@ -15,6 +15,16 @@ const ApiError = require('./utils/ApiError');
 
 const createApp = async () => {
     const app = express();
+
+    // Debug middleware to log origins of ALL requests
+    app.use((req, res, next) => {
+        const origin = req.headers.origin;
+        if (origin) {
+            console.log(`[REQUEST DEBUG] Path: ${req.path}, Origin: "${origin}"`);
+        }
+        next();
+    });
+
     const uploadsDirectory = path.join(__dirname, 'uploads');
     
     const rawAllowedOrigins = [
@@ -66,6 +76,8 @@ const createApp = async () => {
 
     const corsOptions = {
         origin: (origin, callback) => {
+            console.log(`[CORS CALLBACK] Received origin: "${origin}"`);
+            
             // Allow all origins in development
             if (!isProduction) {
                 return callback(null, true);

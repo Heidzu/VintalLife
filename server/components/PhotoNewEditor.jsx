@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormGroup, Label, Input, Button, Box, Text } from '@adminjs/design-system';
+import { FormGroup, Label, Input, Box, Text } from '@adminjs/design-system';
 
 const PhotoNewEditor = (props) => {
     const { resource, onChange } = props;
