@@ -5,7 +5,6 @@ require('@babel/register')({
     only: [/server\/components/],
     presets: ['@babel/preset-env', '@babel/preset-react'],
     plugins: [
-        '@babel/plugin-syntax-import-assertions',
         '@babel/plugin-transform-modules-commonjs'
     ]
 });
