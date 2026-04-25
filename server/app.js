@@ -16,8 +16,17 @@ const ApiError = require('./utils/ApiError');
 const createApp = async () => {
     const app = express();
     const uploadsDirectory = path.join(__dirname, 'uploads');
-    const allowedOrigins = (process.env.CLIENT_URL || 'http://localhost:3000')
-        .split(',')
+    
+    const rawAllowedOrigins = [
+        process.env.CLIENT_URL,
+        process.env.ADMIN_URL,
+        'http://localhost:3000',
+        'http://localhost:5000'
+    ];
+
+    const allowedOrigins = rawAllowedOrigins
+        .filter(Boolean)
+        .flatMap(item => item.split(','))
         .map((origin) => origin.trim())
         .filter(Boolean);
 
@@ -63,16 +72,24 @@ const createApp = async () => {
             }
             
             // In production:
-            // 1. Allow if no origin (non-CORS requests, same-site navigation)
+            // 1. Allow if no origin (non-CORS requests like same-site navigation)
+            if (!origin) {
+                return callback(null, true);
+            }
+
             // 2. Allow if it's in the allowedOrigins list
-            // 3. Allow if it's a request from the same host (optional but safer)
-            if (!origin || allowedOrigins.includes(origin)) {
+            if (allowedOrigins.includes(origin)) {
                 return callback(null, true);
             }
             
-            // If you want to be more permissive in production for the admin panel:
-            // return callback(null, true); 
-            
+            // 3. Special handling for Railway: often the origin is the same as host
+            // If the origin contains 'railway.app', it's likely our own app
+            if (origin.includes('railway.app')) {
+                return callback(null, true);
+            }
+
+            // 4. Default: block
+            console.warn(`CORS blocked for origin: ${origin}`);
             return callback(new ApiError(403, 'CORS policy does not allow this origin.'));
         },
         credentials: true,
