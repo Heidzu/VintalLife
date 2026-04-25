@@ -81,8 +81,9 @@ const createApp = async () => {
                 console.log(`[CORS CALLBACK] Received origin: "${origin}"`);
             }
             
-            // 1. Allow if no origin (non-CORS requests, same-site, or server-side)
-            if (!origin) {
+            // 1. Allow if no origin or origin is "null"
+            // "null" origin is common in redirects, privacy settings, or some browser behaviors
+            if (!origin || origin === 'null') {
                 return callback(null, true);
             }
 
