@@ -76,32 +76,33 @@ const createApp = async () => {
 
     const corsOptions = {
         origin: (origin, callback) => {
-            console.log(`[CORS CALLBACK] Received origin: "${origin}"`);
-            
-            // Allow all origins in development
-            if (!isProduction) {
-                return callback(null, true);
+            // Log for debugging
+            if (origin) {
+                console.log(`[CORS CALLBACK] Received origin: "${origin}"`);
             }
             
-            // In production:
-            // 1. Allow if no origin (non-CORS requests like same-site navigation)
+            // 1. Allow if no origin (non-CORS requests, same-site, or server-side)
             if (!origin) {
                 return callback(null, true);
             }
 
-            // 2. Allow if it's in the allowedOrigins list
+            // 2. Allow all origins in development
+            if (!isProduction) {
+                return callback(null, true);
+            }
+            
+            // 3. Allow if it's in the allowedOrigins list
             if (allowedOrigins.includes(origin)) {
                 return callback(null, true);
             }
             
-            // 3. Special handling for Railway: often the origin is the same as host
+            // 4. Special handling for Railway: allow if it's our own domain
             if (origin.includes('railway.app')) {
                 return callback(null, true);
             }
 
-            // 4. Default: block
+            // 5. Default: block
             console.error(`[CORS DEBUG] Blocked origin: "${origin}"`);
-            console.error(`[CORS DEBUG] Allowed origins: ${JSON.stringify(allowedOrigins)}`);
             return callback(new ApiError(403, 'CORS policy does not allow this origin.'));
         },
         credentials: true,
