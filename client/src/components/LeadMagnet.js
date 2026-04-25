@@ -51,13 +51,15 @@ function LeadMagnet({ setIsSuccessOpen, setIsErrorOpen, contentMap }) {
             />
 
             <div className="lead-magnet-container">
-                <h3 className={`lead-magnet-title ${isVisible ? 'visible delay-1' : ''}`}>
-                    {title}
-                </h3>
+                <h3 
+                    className={`lead-magnet-title ${isVisible ? 'visible delay-1' : ''}`}
+                    dangerouslySetInnerHTML={{ __html: title }}
+                />
 
-                <p className={`lead-magnet-subtitle ${isVisible ? 'visible delay-2' : ''}`}>
-                    {subtitle}
-                </p>
+                <p 
+                    className={`lead-magnet-subtitle ${isVisible ? 'visible delay-2' : ''}`}
+                    dangerouslySetInnerHTML={{ __html: subtitle }}
+                />
 
                 <form
                     className={`lead-magnet-container-form ${isVisible ? 'visible delay-3' : ''}`}
@@ -107,9 +109,10 @@ function LeadMagnet({ setIsSuccessOpen, setIsErrorOpen, contentMap }) {
                             {buttonText}
                         </button>
 
-                        <p className={`lead-magnet-text-pravacy ${isVisible ? 'visible delay-3' : ''}`}>
-                            {privacyText}
-                        </p>
+                        <p 
+                            className={`lead-magnet-text-pravacy ${isVisible ? 'visible delay-3' : ''}`}
+                            dangerouslySetInnerHTML={{ __html: privacyText }}
+                        />
                     </div>
                 </form>
             </div>

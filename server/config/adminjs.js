@@ -356,14 +356,10 @@ const buildAdminPanel = async () => {
         adminJs,
         {
             authenticate: async (email, password) => {
-                console.log(`[AUTH DEBUG] Attempting login for email: "${email}"`);
-                
                 if (email === adminEmail && password === adminPassword) {
-                    console.log('[AUTH DEBUG] Login successful!');
                     return { email };
                 }
 
-                console.log('[AUTH DEBUG] Login failed: Invalid credentials.');
                 return null;
             },
             cookieName: 'vintallife-admin',

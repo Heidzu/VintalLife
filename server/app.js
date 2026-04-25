@@ -15,16 +15,6 @@ const ApiError = require('./utils/ApiError');
 
 const createApp = async () => {
     const app = express();
-
-    // Debug middleware to log origins of ALL requests
-    app.use((req, res, next) => {
-        const origin = req.headers.origin;
-        if (origin) {
-            console.log(`[REQUEST DEBUG] Path: ${req.path}, Origin: "${origin}"`);
-        }
-        next();
-    });
-
     const uploadsDirectory = path.join(__dirname, 'uploads');
     
     const rawAllowedOrigins = [
@@ -76,11 +66,6 @@ const createApp = async () => {
 
     const corsOptions = {
         origin: (origin, callback) => {
-            // Log for debugging
-            if (origin) {
-                console.log(`[CORS CALLBACK] Received origin: "${origin}"`);
-            }
-            
             // 1. Allow if no origin or origin is "null"
             // "null" origin is common in redirects, privacy settings, or some browser behaviors
             if (!origin || origin === 'null') {
@@ -103,7 +88,6 @@ const createApp = async () => {
             }
 
             // 5. Default: block
-            console.error(`[CORS DEBUG] Blocked origin: "${origin}"`);
             return callback(new ApiError(403, 'CORS policy does not allow this origin.'));
         },
         credentials: true,
