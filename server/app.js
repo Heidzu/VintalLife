@@ -83,13 +83,13 @@ const createApp = async () => {
             }
             
             // 3. Special handling for Railway: often the origin is the same as host
-            // If the origin contains 'railway.app', it's likely our own app
             if (origin.includes('railway.app')) {
                 return callback(null, true);
             }
 
             // 4. Default: block
-            console.warn(`CORS blocked for origin: ${origin}`);
+            console.error(`[CORS DEBUG] Blocked origin: "${origin}"`);
+            console.error(`[CORS DEBUG] Allowed origins: ${JSON.stringify(allowedOrigins)}`);
             return callback(new ApiError(403, 'CORS policy does not allow this origin.'));
         },
         credentials: true,
