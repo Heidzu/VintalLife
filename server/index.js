@@ -3,9 +3,12 @@
 require('@babel/register')({
     extensions: ['.js', '.jsx'],
     only: [/server\/components/],
-    presets: ['@babel/preset-env', '@babel/preset-react'],
+    presets: [
+        require.resolve('@babel/preset-env'),
+        require.resolve('@babel/preset-react')
+    ],
     plugins: [
-        '@babel/plugin-transform-modules-commonjs'
+        require.resolve('@babel/plugin-transform-modules-commonjs')
     ]
 });
 

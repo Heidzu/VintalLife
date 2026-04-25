@@ -1,9 +1,10 @@
 module.exports = {
   presets: [
-    '@babel/preset-env',
-    '@babel/preset-react'
+    [require.resolve('@babel/preset-env')],
+    [require.resolve('@babel/preset-react')]
   ],
   plugins: [
-    '@babel/plugin-transform-modules-commonjs'
+    [require.resolve('@babel/plugin-syntax-import-assertions')],
+    [require.resolve('@babel/plugin-transform-modules-commonjs')]
   ]
 };

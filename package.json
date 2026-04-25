@@ -7,6 +7,15 @@
   },
   "scripts": {
     "build": "cd client && npm ci && npm run build",
+    "postinstall": "cd server && npm install",
     "start": "node server/index.js"
+  },
+  "dependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/plugin-syntax-import-assertions": "^7.24.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-react": "^7.24.0",
+    "@babel/register": "^7.24.0"
   }
 }
