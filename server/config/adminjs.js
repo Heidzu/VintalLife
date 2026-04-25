@@ -60,6 +60,8 @@ const buildAdminPanel = async () => {
     const { default: AdminJS, ComponentLoader } = await import('adminjs');
     const AdminJSExpress = await import('@adminjs/express');
     const AdminJSMongoose = await import('@adminjs/mongoose');
+    const session = require('express-session');
+    const MongoDBStore = require('connect-mongodb-session')(session);
 
     AdminJS.registerAdapter({
         Database: AdminJSMongoose.Database,
@@ -76,6 +78,16 @@ const buildAdminPanel = async () => {
     const adminEmail = process.env.ADMIN_EMAIL || 'admin@vintallife.local';
     const adminPassword = process.env.ADMIN_PASSWORD || 'ChangeMe123!';
     const cookieSecret = process.env.ADMIN_COOKIE_SECRET || 'vintallife-admin-secret-change-me';
+    const mongoUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/vintallife';
+
+    const store = new MongoDBStore({
+        uri: mongoUri,
+        collection: 'admin_sessions'
+    });
+
+    store.on('error', (error) => {
+        console.error('Session store error:', error);
+    });
 
     const adminJs = new AdminJS({
         rootPath: ADMIN_ROOT_PATH,
@@ -344,10 +356,14 @@ const buildAdminPanel = async () => {
         adminJs,
         {
             authenticate: async (email, password) => {
+                console.log(`[AUTH DEBUG] Attempting login for email: "${email}"`);
+                
                 if (email === adminEmail && password === adminPassword) {
+                    console.log('[AUTH DEBUG] Login successful!');
                     return { email };
                 }
 
+                console.log('[AUTH DEBUG] Login failed: Invalid credentials.');
                 return null;
             },
             cookieName: 'vintallife-admin',
@@ -358,6 +374,7 @@ const buildAdminPanel = async () => {
             resave: false,
             saveUninitialized: false,
             secret: cookieSecret,
+            store: store,
             cookie: {
                 httpOnly: true,
                 sameSite: 'lax',
